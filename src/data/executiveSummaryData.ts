@@ -88,15 +88,21 @@ The Quantum Imperative is an execution architecture for leaders navigating quant
     },
     {
       number: "08",
-      title: "The Quantum Covenant",
-      subtitle: "A binding institutional governance engine with 6 enforcement tools",
-      keyTakeaway: "A concrete governance protocol with source escrow, kill-switch audits, and baseload mandates to enforce corporate and national sovereignty.",
+      title: "The Quantum Covenant & The 100-Day CEO Action Plan",
+      subtitle: "A binding institutional governance engine and tactical executive roadmap",
+      keyTakeaway: "A comprehensive governance protocol with 4 pillars, 12 obligations, and 6 enforcement tools integrated with a battle-tested 4-phase 100-day execution timeline.",
     },
     {
       number: "09",
-      title: "The 100-Day CEO Action Plan",
-      subtitle: "From vulnerability discovery to board-ratified sovereign posture",
-      keyTakeaway: "A battle-tested 4-phase timeline for CEOs, board chairs, and government ministers to eliminate dependency debt.",
+      title: "Sovereign Institutions & Geopolitical Architecture",
+      subtitle: "Statecraft, industrial policy, and institutional defense in the multipolar era",
+      keyTakeaway: "National resilience requires integrating sovereign compute, baseload power mandates, and strategic capital reserves into defense statecraft.",
+    },
+    {
+      number: "10",
+      title: "The Quantum Singularity of Power",
+      subtitle: "The terminal convergence of intelligence, energy, and sovereign dominion",
+      keyTakeaway: "When quantum supremacy, causal intelligence, and automated statecraft converge, the window for building sovereign capability closes permanently.",
     },
   ],
 };

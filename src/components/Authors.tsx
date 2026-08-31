@@ -4,6 +4,7 @@ import {
   GraduationCap,
   Shield,
   ArrowUpRight,
+  Sparkles,
 } from 'lucide-react';
 
 export const Authors: React.FC = () => {
@@ -12,6 +13,8 @@ export const Authors: React.FC = () => {
       name: "Prof. Dr. Sameer Joshi",
       title: "Professor, Scientist & Deep-Tech Executive",
       subtitle: "Former Siemens Vice President & Business CEO • Co-Founder Quasality",
+      image: "/assets/avatar-joshi.jpg",
+      imageAlt: "Prof. Dr. Sameer Joshi",
       bio: "Prof. Dr. Sameer Joshi is a professor of Business Administration and Artificial Intelligence, deep-tech founder, and former Siemens Vice President and business CEO. With decades bridging high-stakes industrial operations, quantum computing paradigms, and board-level governance, he advises sovereign institutions and industrial leaders on establishing sovereign technology stacks.",
       credentials: [
         { label: "Executive Leadership", value: "Former Siemens VP & Business CEO" },
@@ -25,6 +28,8 @@ export const Authors: React.FC = () => {
       name: "Thorsten Buehrmann",
       title: "Strategist, Systems Architect & Serial Entrepreneur",
       subtitle: "Co-Author & Co-Founder Quasality",
+      image: "/assets/avatar-buehrmann.webp",
+      imageAlt: "Thorsten Buehrmann",
       bio: "Thorsten Buehrmann is a visionary strategist, systems architect, and serial entrepreneur focused on causal artificial intelligence, quantum technologies, operational resilience, and sovereignty. Together with Prof. Dr. Joshi, he co-authors The Convergence Series to equip global leaders with actionable execution architectures before dependency turns into structural debt.",
       credentials: [
         { label: "Systems Architecture", value: "Enterprise Deep-Tech Strategist" },
@@ -59,7 +64,7 @@ export const Authors: React.FC = () => {
           </p>
         </div>
 
-        {/* Dual Author Profile Cards */}
+        {/* Dual Author Profile Cards with Portraits */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {authors.map((author, index) => (
             <motion.div
@@ -71,9 +76,27 @@ export const Authors: React.FC = () => {
               className="p-8 sm:p-10 rounded-3xl bg-obsidian-900 border border-gold-500/30 hover:border-gold-400/60 shadow-2xl transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Author Card Top */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-800 mb-6">
-                  <div>
+                {/* Author Card Top: Portrait + Title Info */}
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-800 mb-6">
+                  {/* Portrait Frame with Glow */}
+                  <div className="relative shrink-0">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-gradient-to-br from-gold-400/60 via-obsidian-850 to-quantum-500/50 shadow-gold-glow-sm group-hover:shadow-gold-glow transition-all duration-300">
+                      <div className="w-full h-full rounded-xl overflow-hidden bg-obsidian-950">
+                        <img
+                          src={author.image}
+                          alt={author.imageAlt}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 w-7 h-7 rounded-lg bg-obsidian-950 border border-gold-500/50 flex items-center justify-center text-gold-400 shadow-md">
+                      <Shield className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+
+                  {/* Header Title Information */}
+                  <div className="text-center sm:text-left">
                     <span className="text-[11px] font-mono font-bold tracking-widest text-gold-400 uppercase">
                       AUTHOR DOSSIER
                     </span>
@@ -83,10 +106,6 @@ export const Authors: React.FC = () => {
                     <p className="text-xs font-mono text-quantum-300 mt-1">
                       {author.subtitle}
                     </p>
-                  </div>
-
-                  <div className="w-12 h-12 rounded-2xl bg-obsidian-950 border border-gold-500/40 flex items-center justify-center text-gold-400 shadow-gold-glow-sm">
-                    <Shield className="w-6 h-6" />
                   </div>
                 </div>
 
@@ -146,17 +165,56 @@ export const Authors: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-obsidian-900 via-obsidian-850 to-obsidian-900 border border-gold-500/20 text-center flex flex-col items-center justify-center"
+          className="mt-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-obsidian-900 via-obsidian-850 to-obsidian-900 border border-gold-500/30 text-center flex flex-col items-center justify-center shadow-2xl"
         >
           <span className="font-mono text-xs text-gold-400 uppercase tracking-widest mb-2">
-            The Convergence Series
+            The Convergence Series by Sameer Joshi & Thorsten Buehrmann
           </span>
-          <h4 className="font-cinzel text-lg sm:text-xl font-bold text-slate-100 mb-2">
-            Volume I & Volume II: Architectural Blueprint for Sovereignty
+          <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-slate-100 mb-3">
+            Two Master Volumes for Sovereign Institutional Leadership
           </h4>
-          <p className="text-xs sm:text-sm text-slate-300 font-light max-w-2xl leading-relaxed">
-            Authored collaboratively by Prof. Dr. Sameer Joshi and Thorsten Buehrmann to formulate actionable frameworks bridging deep physics, causal AI algorithms, and national sovereignty.
+          <p className="text-xs sm:text-sm text-slate-300 font-light max-w-3xl leading-relaxed mb-8">
+            Authored collaboratively to provide institutional executives, board directors, and state leaders with complete operational architectures bridging deep physics, causal AI algorithms, and national sovereignty.
           </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl text-left">
+            {/* Vol 1 */}
+            <a
+              href="https://theconvergenceplaybook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 rounded-xl bg-obsidian-950/80 border border-slate-800 hover:border-gold-500/50 transition-all flex items-center justify-between group"
+            >
+              <div>
+                <div className="text-[10px] font-mono text-gold-400 uppercase font-bold">
+                  VOLUME I
+                </div>
+                <div className="font-cinzel text-sm font-bold text-slate-200 group-hover:text-gold-300 transition-colors">
+                  The Convergence Playbook
+                </div>
+                <div className="text-[11px] font-mono text-slate-400">
+                  TheConvergencePlaybook.com
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-gold-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+            </a>
+
+            {/* Vol 2 */}
+            <div className="p-4 rounded-xl bg-obsidian-950/80 border border-gold-500/40 flex items-center justify-between shadow-gold-glow-sm">
+              <div>
+                <div className="text-[10px] font-mono text-quantum-300 uppercase font-bold">
+                  VOLUME II (CURRENT)
+                </div>
+                <div className="font-cinzel text-sm font-bold text-slate-100">
+                  The Quantum Imperative
+                </div>
+                <div className="text-[11px] font-mono text-slate-400">
+                  TheQuantumImperative.com
+                </div>
+              </div>
+              <span className="w-2 h-2 rounded-full bg-gold-400 shrink-0 animate-ping" />
+            </div>
+          </div>
         </motion.div>
 
       </div>

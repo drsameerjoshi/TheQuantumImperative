@@ -175,6 +175,14 @@ export const ExecutiveSummaryModal: React.FC<ExecutiveSummaryModalProps> = ({
               <div>
                 <span>Series: </span>
                 <strong className="text-gold-400">{EXECUTIVE_SUMMARY.series}</strong>
+                <a
+                  href="https://theconvergenceplaybook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 text-quantum-300 hover:text-quantum-200 underline underline-offset-2"
+                >
+                  (Explore Vol I: The Convergence Playbook ↗)
+                </a>
               </div>
             </div>
 

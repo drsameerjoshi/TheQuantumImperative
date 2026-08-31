@@ -82,17 +82,30 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSummary }) => {
           
           {/* Left Column: Hero Copy & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Volume Badge */}
+            {/* Volume & Series Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900/90 border border-gold-500/40 shadow-gold-glow-sm mb-6 backdrop-blur-md"
+              className="flex flex-wrap items-center gap-2.5 mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-gold-400 animate-ping" />
-              <span className="font-cinzel text-[11px] font-bold tracking-[0.2em] text-gold-300 uppercase">
-                The Convergence Series • Volume II
-              </span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900/90 border border-gold-500/40 shadow-gold-glow-sm backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-gold-400 animate-ping" />
+                <span className="font-cinzel text-[11px] font-bold tracking-[0.2em] text-gold-300 uppercase">
+                  The Convergence Series • Volume II
+                </span>
+              </div>
+
+              <a
+                href="https://theconvergenceplaybook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-obsidian-900/80 border border-slate-700 hover:border-gold-400/60 text-[10px] font-mono text-slate-300 hover:text-gold-300 transition-all backdrop-blur-md group"
+              >
+                <BookOpen className="w-3 h-3 text-gold-400" />
+                <span>Vol I: The Convergence Playbook</span>
+                <ArrowRight className="w-3 h-3 text-gold-400 group-hover:translate-x-0.5 transition-transform" />
+              </a>
             </motion.div>
 
             {/* Main Headline */}

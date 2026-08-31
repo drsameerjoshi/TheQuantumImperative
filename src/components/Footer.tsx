@@ -112,18 +112,29 @@ export const Footer: React.FC<FooterProps> = ({ onOpenSummary }) => {
 
             <div className="mt-6 pt-4 border-t border-slate-900">
               <div className="font-cinzel text-[11px] font-bold uppercase tracking-widest text-slate-300 mb-2">
-                Ecosystem Links
+                The Convergence Series & Ecosystem
               </div>
-              <div className="space-y-1.5 text-xs">
+              <div className="space-y-2 text-xs">
                 <a
-                  href="https://quasality.ai"
+                  href="https://theconvergenceplaybook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-gold-400 hover:text-gold-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-gold-400 hover:text-gold-300 transition-colors font-medium"
                 >
-                  <span>Quasality.ai (Quantum Causal AI)</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <span>The Convergence Playbook (Vol I)</span>
+                  <ExternalLink className="w-3 h-3 text-gold-400" />
                 </a>
+                <div>
+                  <a
+                    href="https://quasality.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-quantum-300 hover:text-quantum-200 transition-colors"
+                  >
+                    <span>Quasality.ai (Quantum Causal AI)</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

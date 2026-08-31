@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: 212, 175, 55;
+    --quantum: 0, 229, 255;
+    --ember: 234, 88, 12;
+    --obsidian: 5, 8, 17;
+  }
+
+  body {
+    background-color: #050811;
+    color: #e2e8f0;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050811;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #17223b;
+    border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+  }
+}
+
+@layer components {
+  /* Roman Inscriptional Typography */
+  .roman-heading {
+    @apply font-cinzel tracking-[0.18em] uppercase font-bold text-transparent bg-clip-text bg-gold-gradient;
+  }
+
+  .roman-subtitle {
+    @apply font-cinzel tracking-[0.12em] uppercase font-semibold text-gold-300;
+  }
+
+  /* Glassmorphism with Sovereign accents */
+  .glass-card {
+    @apply bg-obsidian-900/80 backdrop-blur-xl border border-slate-800/80 rounded-2xl shadow-2xl transition-all duration-300;
+  }
+
+  .glass-card-gold {
+    @apply bg-obsidian-900/80 backdrop-blur-xl border border-gold-500/30 rounded-2xl shadow-gold-glow transition-all duration-300;
+  }
+
+  .glass-card-quantum {
+    @apply bg-obsidian-900/80 backdrop-blur-xl border border-quantum-500/30 rounded-2xl shadow-quantum-glow transition-all duration-300;
+  }
+
+  .glass-card-hover {
+    @apply hover:border-gold-400/60 hover:shadow-gold-glow hover:-translate-y-1 transition-all duration-300;
+  }
+
+  /* Buttons */
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-cinzel text-xs md:text-sm font-bold tracking-[0.14em] uppercase text-obsidian-950 bg-gold-gradient shadow-gold-glow hover:shadow-gold-glow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden cursor-pointer;
+  }
+
+  .btn-glass {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-cinzel text-xs md:text-sm font-bold tracking-[0.14em] uppercase text-slate-200 bg-obsidian-850/80 backdrop-blur-lg border border-slate-700/80 hover:border-gold-400/70 hover:text-gold-300 hover:shadow-gold-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-quantum {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-cinzel text-xs md:text-sm font-bold tracking-[0.14em] uppercase text-obsidian-950 bg-quantum-gradient shadow-quantum-glow hover:shadow-quantum-glow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer;
+  }
+
+  /* Subtle background grid pattern */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .bg-circuit-pattern {
+    background-size: 60px 60px;
+    background-image: 
+      radial-gradient(circle, rgba(0, 229, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  }
+}
+
+/* 3D perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Shimmer animated gradient */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #d4af37 0%,
+    #fff2cc 50%,
+    #d4af37 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear;
+}

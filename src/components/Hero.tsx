@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import {
   ShoppingBag,
@@ -8,6 +8,8 @@ import {
   RotateCw,
   Cpu,
   Flame,
+  Pause,
+  Play,
 } from 'lucide-react';
 
 interface HeroProps {
@@ -16,17 +18,30 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenSummary }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Soft Auto-Flip Timer (Every 7.5 seconds, pauses when user hovers or manually toggles)
+  useEffect(() => {
+    if (!isAutoPlay || isHovered) return;
+
+    const interval = setInterval(() => {
+      setIsFlipped((prev) => !prev);
+    }, 7500);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay, isHovered]);
 
   // Mouse tilt interaction physics
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
+  const mouseXSpring = useSpring(x, { stiffness: 100, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 100, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['12deg', '-12deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-12deg', '12deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['10deg', '-10deg']);
+  const rotateYOffset = useTransform(mouseXSpring, [-0.5, 0.5], [-8, 8]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -43,9 +58,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSummary }) => {
     y.set(yPct);
   };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
   const handleMouseLeave = () => {
+    setIsHovered(false);
     x.set(0);
     y.set(0);
+  };
+
+  const toggleManualFlip = () => {
+    setIsFlipped(!isFlipped);
   };
 
   return (
@@ -175,35 +199,59 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSummary }) => {
             </motion.div>
           </div>
 
-          {/* Right Column: 3D Interactive Floating Book */}
+          {/* Right Column: 3D Interactive & Soft Auto-Flipping Floating Book */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
             
             {/* 3D Perspective Card Container */}
             <div
               ref={cardRef}
               onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="perspective-1000 w-full max-w-[340px] sm:max-w-[380px] aspect-[1/1.5] relative cursor-pointer group"
-              onClick={() => setIsFlipped(!isFlipped)}
+              onClick={toggleManualFlip}
+              title="Click to flip or hover to inspect"
             >
-              {/* Outer Glowing Quantum Circuit Aura */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-gold-500/20 via-quantum-500/25 to-ember-600/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              {/* Outer Glowing Quantum Circuit Aura with subtle pulse */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.03, 1],
+                  opacity: isFlipped ? [0.7, 0.9, 0.7] : [0.75, 0.95, 0.75],
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -inset-4 bg-gradient-to-r from-gold-500/20 via-quantum-500/25 to-ember-600/20 rounded-3xl blur-2xl pointer-events-none"
+              />
 
-              {/* Card wrapper with mouse-spring tilt and flip */}
+              {/* Card wrapper with soft, majestic flip rotation and mouse tilt */}
               <motion.div
                 style={{
-                  rotateX: isFlipped ? 0 : rotateX,
-                  rotateY: isFlipped ? 180 : rotateY,
+                  rotateX: rotateX,
                   transformStyle: 'preserve-3d',
                 }}
-                transition={{ duration: 0.6, type: 'spring', stiffness: 120, damping: 14 }}
-                className="w-full h-full relative rounded-2xl shadow-2xl transition-all duration-500 preserve-3d"
+                animate={{
+                  rotateY: isFlipped ? 180 : 0,
+                  y: isHovered ? -6 : [0, -8, 0],
+                }}
+                transition={{
+                  rotateY: {
+                    duration: 1.8,
+                    ease: [0.33, 1, 0.68, 1], // Soft, luxurious cubic-bezier easing
+                  },
+                  y: {
+                    duration: 5,
+                    repeat: isHovered ? 0 : Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                className="w-full h-full relative rounded-2xl shadow-2xl preserve-3d"
               >
                 {/* FRONT COVER SIDE */}
                 <div
-                  className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden backface-hidden border-2 border-gold-500/40 shadow-gold-glow bg-obsidian-950 flex flex-col ${
-                    isFlipped ? 'pointer-events-none opacity-0' : 'opacity-100'
-                  }`}
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                  }}
+                  className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden border-2 border-gold-500/40 shadow-gold-glow bg-obsidian-950 flex flex-col z-10"
                 >
                   <img
                     src="/assets/book-cover-front.jpg"
@@ -211,21 +259,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSummary }) => {
                     className="w-full h-full object-cover object-center select-none"
                     loading="eager"
                   />
-                  {/* Subtle Light reflection overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  {/* Soft Light Sheen Sweep Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                   
                   {/* Front badge */}
-                  <div className="absolute bottom-3 right-3 bg-obsidian-950/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-gold-500/40 text-[10px] font-mono text-gold-300 flex items-center gap-1.5">
-                    <RotateCw className="w-3 h-3 text-quantum-400 animate-spin-slow" />
-                    <span>Click to Flip to Back</span>
+                  <div className="absolute bottom-3 right-3 bg-obsidian-950/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-gold-500/40 text-[10px] font-mono text-gold-300 flex items-center gap-1.5 shadow-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
+                    <span>Front • Front Cover</span>
                   </div>
                 </div>
 
                 {/* BACK COVER SIDE */}
                 <div
-                  className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden backface-hidden border-2 border-quantum-500/40 shadow-quantum-glow bg-obsidian-950 rotate-y-180 flex flex-col ${
-                    !isFlipped ? 'pointer-events-none opacity-0' : 'opacity-100'
-                  }`}
+                  style={{
+                    transform: 'rotateY(180deg)',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                  }}
+                  className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden border-2 border-quantum-500/40 shadow-quantum-glow bg-obsidian-950 flex flex-col z-10"
                 >
                   <img
                     src="/assets/book-cover-back.jpg"
@@ -233,28 +284,53 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSummary }) => {
                     className="w-full h-full object-cover object-center select-none"
                     loading="eager"
                   />
+                  {/* Soft Light Sheen Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
                   {/* Back badge */}
-                  <div className="absolute bottom-3 right-3 bg-obsidian-950/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-quantum-500/40 text-[10px] font-mono text-quantum-300 flex items-center gap-1.5">
-                    <RotateCw className="w-3 h-3 text-gold-400" />
-                    <span>Click to View Front</span>
+                  <div className="absolute bottom-3 right-3 bg-obsidian-950/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-quantum-500/40 text-[10px] font-mono text-quantum-300 flex items-center gap-1.5 shadow-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-quantum-400 animate-pulse" />
+                    <span>Back • Manifesto & Instruments</span>
                   </div>
                 </div>
               </motion.div>
             </div>
 
-            {/* Flip toggle button below the book */}
-            <div className="mt-6 flex items-center gap-3">
+            {/* Soft Flip Controls & Live Status Indicator */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              {/* Manual Soft Flip Toggle */}
               <button
-                onClick={() => setIsFlipped(!isFlipped)}
-                className="px-4 py-2 rounded-xl bg-obsidian-900/80 border border-slate-700 hover:border-gold-500/50 text-xs font-cinzel tracking-wider text-slate-300 hover:text-gold-300 flex items-center gap-2 transition-all shadow-md backdrop-blur-md"
+                onClick={toggleManualFlip}
+                className="px-4 py-2 rounded-xl bg-obsidian-900/90 border border-slate-700 hover:border-gold-500/50 text-xs font-cinzel tracking-wider text-slate-300 hover:text-gold-300 flex items-center gap-2 transition-all shadow-md backdrop-blur-md"
               >
-                <RotateCw className="w-3.5 h-3.5 text-gold-400" />
-                <span>{isFlipped ? 'View Front Cover (Roman Bust & Circuits)' : 'View Back Cover (Manifesto & ISBN)'}</span>
+                <RotateCw className={`w-3.5 h-3.5 ${isFlipped ? 'text-quantum-400' : 'text-gold-400'} transition-transform duration-700 ${isHovered ? 'rotate-180' : ''}`} />
+                <span>{isFlipped ? 'Flip to Front Cover' : 'Flip to Back Manifesto'}</span>
+              </button>
+
+              {/* Auto-Play Pause / Resume Button */}
+              <button
+                onClick={() => setIsAutoPlay(!isAutoPlay)}
+                className="p-2 rounded-xl bg-obsidian-900/90 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-gold-300 text-xs flex items-center gap-1.5 transition-all backdrop-blur-md"
+                title={isAutoPlay ? 'Pause auto-flipping' : 'Resume auto-flipping'}
+              >
+                {isAutoPlay ? (
+                  <>
+                    <Pause className="w-3.5 h-3.5 text-gold-400" />
+                    <span className="text-[10px] font-mono text-slate-400">
+                      {isHovered ? 'Paused on Hover' : 'Auto-Orbiting'}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-3.5 h-3.5 text-slate-400" />
+                    <span className="text-[10px] font-mono text-slate-500">Auto-Flip Off</span>
+                  </>
+                )}
               </button>
             </div>
 
             {/* Quantum Equation Floating Pill */}
-            <div className="mt-3 inline-flex items-center gap-3 px-3 py-1.5 rounded-lg bg-obsidian-900/60 border border-quantum-500/20 text-[11px] font-mono text-quantum-300/80 backdrop-blur-sm">
+            <div className="mt-3 inline-flex items-center gap-3 px-3.5 py-1.5 rounded-lg bg-obsidian-900/60 border border-quantum-500/20 text-[11px] font-mono text-quantum-300/80 backdrop-blur-sm">
               <span>|Ψ⟩ = ∑ αᵢ |i⟩</span>
               <span className="text-slate-600">•</span>
               <span>Bloch Sphere [ |0⟩ ↔ |1⟩ ]</span>

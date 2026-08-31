@@ -1,5 +1,6 @@
 export interface ChapterOutline {
   number: string;
+  part: string;
   title: string;
   subtitle: string;
   keyTakeaway: string;
@@ -16,93 +17,129 @@ export const EXECUTIVE_SUMMARY = {
     "Computers / Quantum Computing",
     "Political Science / Geopolitics",
   ],
-  coreThesis: `Quantum power will belong to those who control the systems on which decisions, infrastructure, and industrial capacity depend. 
+  coreThesis: `The era of aspirational declarations is over. This book provides the architectural blueprint and the operational C-Suite playbook for sovereign survival in the quantum era.
 
-The Quantum Imperative is an execution architecture for leaders navigating quantum, AI, robotics, energy, space, and sovereign power. It provides the concrete blueprints showing what to own, secure, govern, and build before dependency hardens into permanent sovereignty debt.`,
+Declarations inspire but do not bind. What the quantum transition demands is an architecture of mutual obligation: a Quantum Covenant that transforms geopolitical aspiration into enforceable commitment. 
+
+Nations must urgently establish quantum sovereignty (a vertically integrated stack spanning energy, computation, algorithmic auditability, and talent) to secure national interests in an era where cognitive colonization replaces territorial conquest. The winners of the next decade will own their intelligence, not rent it.`,
 
   keyParadigmShifts: [
     {
-      from: "Territorial Borders & Trade Treaties",
-      to: "Computational Sovereignty & Algorithmic Lineage",
-      description: "Modern power is no longer governed merely by physical geographic boundaries, but by who controls the silicon fabs, quantum backends, and causal reasoning engines.",
+      from: "Territorial Conquest & Labor Arbitrage",
+      to: "Cognitive Sovereignty & Physical AI Automation",
+      description: "Demographic pivots and robotics dismantle traditional low-cost labor advantages. Power scales with control of automated systems, baseload energy, and causal models.",
     },
     {
       from: "The 'Subscriber' Convenience Economy",
-      to: "Verifiable Owned Capability",
-      description: "Leasing cloud computing, foreign LLM endpoints, and proprietary cryptographic keys creates irreversible operational fragility. Sovereignty requires end-to-end auditability and ownership.",
+      to: "Verifiable Owned Capability (Sovereign Stack)",
+      description: "Leasing cloud endpoints and uninspected algorithms creates compounding Sovereignty Debt. Critical capability must be vertically integrated and auditable.",
     },
     {
-      from: "Black-Box Probabilistic AI",
-      to: "Causal & Physics-Informed Intelligence",
-      description: "Critical industrial, energy, and defense systems cannot be operated on statistical hallucinations. Causal AI with white-box interpretability is an existential requirement.",
+      from: "Statistical AI Curve-Fitting (Correlation)",
+      to: "Causal Quantum Intelligence (Mechanism & Why)",
+      description: "Critical industrial, energy, and defense systems cannot be governed by black-box statistical autocomplete. Causal models with Glass-Box proof chains are existential.",
     },
     {
-      from: "Complacent Posture toward Q-Day",
-      to: "Proactive Lattice PQC & QKD Migration",
-      description: "Adversaries are actively executing 'Harvest Now, Decrypt Later'. Encrypted data in transit today will be cracked unless post-quantum lattice cryptography is implemented immediately.",
+      from: "Voluntary Ethics Manifestos",
+      to: "Binding Quantum Covenant Architecture",
+      description: "Replaces toothless policy declarations with 12 auditable commitments across government, enterprise, academia, institutions, and Tech-Nations backed by market conditionality.",
     },
   ],
 
-  chapters: [
+  parts: [
     {
-      number: "01",
-      title: "The Anatomy of Industrial Evaporation",
-      subtitle: "Why Germany is not an anomaly, but the historical preview",
-      keyTakeaway: "De-industrialization begins not with plant closures, but with the quiet surrender of energy baseload and core technological stacks.",
+      part: "PART I",
+      partTitle: "THE QUANTUM ARSENAL",
+      chapters: [
+        {
+          number: "01",
+          part: "PART I",
+          title: "The Demographic Pivot",
+          subtitle: "Why the global labor arbitrage model is breaking and robotics becomes a population substitute",
+          keyTakeaway: "Fertility collapse across industrial nations and rising youth populations in emerging economies collide with automation. Power equals control of automation multiplied by access to energy multiplied by causal model ownership.",
+        },
+        {
+          number: "02",
+          part: "PART I",
+          title: "The Sovereign Stack",
+          subtitle: "The six numbered layers (Layer 0 Energy to Layer 5 Talent) and the anatomy of Sovereignty Debt",
+          keyTakeaway: "Quantum sovereignty requires vertical integration across materials, algorithms, applications, governance, and talent, anchored by Layer 0 Energy and verified through Sovereign Auditability.",
+        },
+        {
+          number: "03",
+          part: "PART I",
+          title: "The Quantum Tech-Nation",
+          subtitle: "Regulating private corporate behemoths that exceed the economic scale of sovereign states",
+          keyTakeaway: "Corporate market capitalizations rival sovereign treasuries. Trillion-dollar Tech-Nations controlling orbital networks, cloud compute, and synthetic populations require binding counter-architectures.",
+        },
+      ],
     },
     {
-      number: "02",
-      title: "The Quantum Convergence",
-      subtitle: "When QPU backends, causal AI, and robotics collide",
-      keyTakeaway: "Quantum computing is not an isolated acceleration tool; it is the master orchestrator of next-generation materials, chemistry, and cryptographic supremacy.",
+      part: "PART II",
+      partTitle: "THE QUANTUM ARCHITECTURE",
+      chapters: [
+        {
+          number: "04",
+          part: "PART II",
+          title: "The Quantum Covenant Architecture",
+          subtitle: "A binding institutional governance engine with 12 obligations, 6 instruments, and Tech-Nation mandates",
+          keyTakeaway: "Inspired by the CERN prototype: creates enforceable market conditionality, hard audit protocols (G1–G3, E1–E3, A1–A3, I1–I3), and an Orbital Covenant for governance beyond Earth.",
+        },
+        {
+          number: "05",
+          part: "PART II",
+          title: "Causal Quantum Intelligence",
+          subtitle: "Moving from statistical curve-fitting to verifiable Glass-Box causal reasoning engines",
+          keyTakeaway: "CQI integrates structural causal modeling with quantum-hybrid runtimes (post-QUBO/HUBO/Hamiltonian) to construct inspectable, challengeable proof chains rather than black-box guesses.",
+        },
+        {
+          number: "06",
+          part: "PART II",
+          title: "The Quantum Industrial Omniverse",
+          subtitle: "The tri-paradigm execution model (Classical, Quantum, Neuromorphic) for factories, supply chains, and digital twins",
+          keyTakeaway: "Connects causal intelligence to physical production, high-fidelity digital twins, and resilient supply chains, backed by dedicated Layer 0 power purchase agreements.",
+        },
+      ],
     },
     {
-      number: "03",
-      title: "The Sovereign Stack",
-      subtitle: "A 6-layer physical-to-cognitive blueprint for institutional autonomy",
-      keyTakeaway: "True sovereignty spans from Layer 0 (behind-the-meter energy) to Layer 5 (in-house engineering elite), bound by continuous mathematical auditability.",
+      part: "PART III",
+      partTitle: "THE QUANTUM EXECUTION",
+      chapters: [
+        {
+          number: "07",
+          part: "PART III",
+          title: "The Geopolitics of Quantum Talent",
+          subtitle: "Talent Sovereignty and the global contest for the ~16,000 pure-play quantum specialists",
+          keyTakeaway: "Lithography can be restricted by export controls, but talent walks through airports. Nations must align research, compensation, immigration speed, and long-term operating environments.",
+        },
+        {
+          number: "08",
+          part: "PART III",
+          title: "Quantum Leadership & Governance",
+          subtitle: "The Quantum C-Suite, the Fable 5 leadership test, PQC 4-phase migration, and the 100-Day CEO Action Plan",
+          keyTakeaway: "Delivers the operational operating system: 5 Quantum Leadership Capabilities, Chief Quantum Officer roles, board governance matrix, and an adaptive 100-day execution protocol.",
+        },
+      ],
     },
     {
-      number: "04",
-      title: "The Economics of Sovereignty Debt",
-      subtitle: "How vendor lock-in compounds into existential liability",
-      keyTakeaway: "Every cloud subscription without a working bare-metal fallback is an unpriced call option held by a foreign state over your balance sheet.",
-    },
-    {
-      number: "05",
-      title: "Causal Intelligence vs. Stochastic Illusion",
-      subtitle: "Why industrial automation demands Structural Causal Models",
-      keyTakeaway: "Correlation-based LLMs cannot govern physical systems. Causal graphs and counterfactual validation are required for sovereign control.",
-    },
-    {
-      number: "06",
-      title: "Post-Quantum Cryptography & Harvest-Now Defense",
-      subtitle: "Shielding state secrets and banking infrastructure before Q-Day",
-      keyTakeaway: "Lattice-based PQC algorithms and quantum key distribution must be deployed before Shor's algorithm renders legacy PKI obsolete.",
-    },
-    {
-      number: "07",
-      title: "The Geopolitics of Silicon & Advanced Packaging",
-      subtitle: "Escaping the maritime foundry chokepoint",
-      keyTakeaway: "2.5D/3D heterogeneous packaging and open-ISA architectures provide the only credible path to domestic silicon resilience.",
-    },
-    {
-      number: "08",
-      title: "The Quantum Covenant & The 100-Day CEO Action Plan",
-      subtitle: "A binding institutional governance engine and tactical executive roadmap",
-      keyTakeaway: "A comprehensive governance protocol with 4 pillars, 12 obligations, and 6 enforcement tools integrated with a battle-tested 4-phase 100-day execution timeline.",
-    },
-    {
-      number: "09",
-      title: "Sovereign Institutions & Geopolitical Architecture",
-      subtitle: "Statecraft, industrial policy, and institutional defense in the multipolar era",
-      keyTakeaway: "National resilience requires integrating sovereign compute, baseload power mandates, and strategic capital reserves into defense statecraft.",
-    },
-    {
-      number: "10",
-      title: "The Quantum Singularity of Power",
-      subtitle: "The terminal convergence of intelligence, energy, and sovereign dominion",
-      keyTakeaway: "When quantum supremacy, causal intelligence, and automated statecraft converge, the window for building sovereign capability closes permanently.",
+      part: "PART IV",
+      partTitle: "THE QUANTUM HORIZON",
+      chapters: [
+        {
+          number: "09",
+          part: "PART IV",
+          title: "The Quantum Phase-Shift",
+          subtitle: "Temporal Sovereignty, the 2026–2035 planning window, and Europe's Industrial Pivot",
+          keyTakeaway: "Maps three analytical phases: Phase 1 Regulatory Squeeze (2026–2028), Phase 2 Causal Divergence (2029–2032), and Phase 3 Sovereign Realignment (2033–2035).",
+        },
+        {
+          number: "10",
+          part: "PART IV",
+          title: "The Quantum Singularity of Power",
+          subtitle: "The Knowledge Singularity, the end of the Toynbee Cycle, and the final imperative to own your intelligence",
+          keyTakeaway: "When the capacity to simulate, test, and act upon high-consequence evidence expands, power belongs not simply to those who compute the most, but to those who can justify, secure, and govern what systems decide.",
+        },
+      ],
     },
   ],
 };

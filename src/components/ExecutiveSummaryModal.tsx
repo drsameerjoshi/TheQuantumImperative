@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
   BookOpen,
   ShoppingBag,
-  Layers,
   Sparkles,
+  ShieldCheck,
+  Layers,
   CheckCircle2,
+  FileText,
 } from 'lucide-react';
 import { EXECUTIVE_SUMMARY } from '../data/executiveSummaryData';
 
@@ -19,84 +21,73 @@ export const ExecutiveSummaryModal: React.FC<ExecutiveSummaryModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
   if (!isOpen) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-y-auto">
-        {/* Backdrop */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-y-auto bg-obsidian-950/90 backdrop-blur-xl">
+        
+        {/* Backdrop click to dismiss */}
+        <div
+          className="fixed inset-0"
           onClick={onClose}
-          className="fixed inset-0 bg-obsidian-950/90 backdrop-blur-2xl transition-opacity"
         />
 
-        {/* Modal Window */}
+        {/* Modal Container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.3, type: 'spring', damping: 25 }}
-          className="relative w-full max-w-4xl max-h-[90vh] bg-obsidian-900 border border-gold-500/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden z-10"
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-4xl max-h-[90vh] bg-obsidian-900 border border-gold-500/40 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10"
         >
           {/* Modal Header */}
-          <div className="flex items-center justify-between p-6 sm:px-8 border-b border-slate-800 bg-obsidian-950/80 sticky top-0 z-20">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-obsidian-900 border border-gold-500/30 flex items-center justify-center text-gold-400">
-                <BookOpen className="w-5 h-5" />
+          <div className="p-6 sm:p-8 border-b border-slate-800 bg-obsidian-950 flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-obsidian-900 border border-gold-500/40 flex items-center justify-center text-gold-400 shadow-gold-glow-sm shrink-0">
+                <BookOpen className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-gold-400 font-bold">
-                  EXECUTIVE BRIEF & CHAPTER DIRECTORY
-                </span>
-                <h3 className="font-cinzel text-lg sm:text-xl font-bold text-slate-100">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-gold-400">
+                    EXECUTIVE DOSSIER & CHAPTER BLUEPRINT
+                  </span>
+                </div>
+                <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-slate-100 mt-0.5">
                   {EXECUTIVE_SUMMARY.bookTitle}
                 </h3>
+                <p className="text-xs text-slate-400 font-mono">
+                  {EXECUTIVE_SUMMARY.subtitle} • {EXECUTIVE_SUMMARY.authors}
+                </p>
               </div>
             </div>
 
             <button
               onClick={onClose}
               className="p-2 rounded-xl bg-obsidian-900 border border-slate-800 text-slate-400 hover:text-slate-100 hover:border-slate-700 transition-colors"
-              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Scrollable Modal Body */}
-          <div className="p-6 sm:p-8 overflow-y-auto space-y-10">
+          {/* Modal Body: Scrollable Content */}
+          <div className="p-6 sm:p-8 overflow-y-auto space-y-8 custom-scrollbar">
             
-            {/* Core Thesis Card */}
+            {/* Core Thesis Box */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-obsidian-950 to-obsidian-900 border border-gold-500/30">
-              <div className="text-xs font-mono uppercase text-gold-400 tracking-wider mb-2">
-                Executive Synthesis
+              <div className="flex items-center gap-2 text-gold-400 text-xs font-mono tracking-wider uppercase mb-3">
+                <Sparkles className="w-4 h-4" />
+                <span>Executive Summary Manifesto</span>
               </div>
               <p className="text-sm sm:text-base text-slate-200 font-light leading-relaxed whitespace-pre-line">
                 {EXECUTIVE_SUMMARY.coreThesis}
               </p>
             </div>
 
-            {/* Key Paradigm Shifts */}
+            {/* 4 Core Paradigm Shifts */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-4 h-4 text-quantum-400" />
+                <ShieldCheck className="w-4 h-4 text-quantum-400" />
                 <h4 className="font-cinzel text-lg font-bold text-slate-100 uppercase">
                   4 Core Paradigm Shifts
                 </h4>
@@ -124,38 +115,54 @@ export const ExecutiveSummaryModal: React.FC<ExecutiveSummaryModalProps> = ({
               </div>
             </div>
 
-            {/* Complete Chapter Directory */}
+            {/* Complete 4-Part, 10-Chapter Directory */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-6">
                 <Layers className="w-4 h-4 text-gold-400" />
                 <h4 className="font-cinzel text-lg font-bold text-slate-100 uppercase">
-                  Chapter Directory & Key Takeaways
+                  The Complete 10-Chapter Architecture
                 </h4>
               </div>
 
-              <div className="space-y-3">
-                {EXECUTIVE_SUMMARY.chapters.map((ch) => (
-                  <div
-                    key={ch.number}
-                    className="p-4 rounded-xl bg-obsidian-950 border border-slate-800/80 hover:border-gold-500/30 transition-colors"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-gold-400">
-                          CH {ch.number}
-                        </span>
-                        <h5 className="font-cinzel text-sm font-bold text-slate-100">
-                          {ch.title}
-                        </h5>
-                      </div>
-                      <span className="text-[11px] font-mono text-slate-500 italic">
-                        {ch.subtitle}
+              <div className="space-y-6">
+                {EXECUTIVE_SUMMARY.parts.map((partGroup) => (
+                  <div key={partGroup.part} className="space-y-3">
+                    <div className="flex items-center gap-2 pb-2 border-b border-slate-800">
+                      <span className="font-mono text-xs font-bold text-gold-400">
+                        {partGroup.part}:
+                      </span>
+                      <span className="font-cinzel text-xs font-bold text-slate-200 uppercase tracking-wider">
+                        {partGroup.partTitle}
                       </span>
                     </div>
 
-                    <div className="p-2.5 rounded-lg bg-obsidian-900 border border-slate-850 text-xs font-light text-slate-300 flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-gold-400 shrink-0 mt-0.5" />
-                      <span>{ch.keyTakeaway}</span>
+                    <div className="space-y-2.5">
+                      {partGroup.chapters.map((ch) => (
+                        <div
+                          key={ch.number}
+                          className="p-4 rounded-xl bg-obsidian-950 border border-slate-800/80 hover:border-gold-500/30 transition-colors"
+                        >
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-xs font-bold text-quantum-300">
+                                CH {ch.number}
+                              </span>
+                              <h5 className="font-cinzel text-sm font-bold text-slate-100">
+                                {ch.title}
+                              </h5>
+                            </div>
+                          </div>
+
+                          <div className="text-[11px] font-mono text-slate-400 mb-2">
+                            {ch.subtitle}
+                          </div>
+
+                          <div className="p-2.5 rounded-lg bg-obsidian-900 border border-slate-850 text-xs font-light text-slate-300 flex items-start gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-gold-400 shrink-0 mt-0.5" />
+                            <span>{ch.keyTakeaway}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ))}

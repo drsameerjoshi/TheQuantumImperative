@@ -392,7 +392,7 @@ export const SovereignStack: React.FC = () => {
               {CROSS_CUTTING_AUDITABILITY.description}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-              {CROSS_CUTTING_AUDITABILITY.requirements.map((req, i) => (
+              {CROSS_CUTTING_AUDITABILITY.requirements.map((req: string, i: number) => (
                 <div
                   key={i}
                   className="flex items-center gap-2 text-[11px] font-mono text-slate-300 bg-obsidian-900/90 px-3 py-2 rounded-lg border border-slate-800"

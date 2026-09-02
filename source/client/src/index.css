@@ -170,8 +170,8 @@ h1 em, h2 em { color: var(--gold-bright); font-family: var(--font-editorial); fo
 
 .cover-shell { position: relative; width: min(54vw, 290px); margin-inline: auto; }
 .cover-shell::after { content: ""; position: absolute; z-index: -1; left: 10%; right: 10%; bottom: 38px; height: 18%; background: rgba(0, 0, 0, 0.72); filter: blur(30px); }
-.cover-flip { width: 100%; aspect-ratio: 2 / 3; padding: 0; border: 0; background: transparent; perspective: 1400px; }
-.cover-flip__inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 640ms var(--ease-in-out); }
+.cover-flip { width: 100%; aspect-ratio: 2 / 3; padding: 0; border: 0; background: transparent; perspective: 1400px; cursor: pointer; }
+.cover-flip__inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 1800ms cubic-bezier(0.33, 1, 0.68, 1); }
 .cover-flip__inner.is-flipped { transform: rotateY(180deg); }
 .cover-face { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(232, 224, 210, 0.36); border-radius: 2px 7px 7px 2px; backface-visibility: hidden; box-shadow: -8px 16px 46px rgba(0,0,0,.52), 12px 0 0 -8px #9a8350; }
 .cover-face img { width: 100%; height: 100%; object-fit: cover; }

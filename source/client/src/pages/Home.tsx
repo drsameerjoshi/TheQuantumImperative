@@ -126,9 +126,23 @@ function SiteHeader() {
 
 function CoverFlip() {
   const [flipped, setFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Soft automatic periodic flip (every 7.5s, pauses when user hovers to inspect)
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setFlipped((value) => !value);
+    }, 7500);
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return (
-    <div className="cover-shell">
+    <div
+      className="cover-shell"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <button
         type="button"
         className="cover-flip"

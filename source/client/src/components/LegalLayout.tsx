@@ -1,4 +1,5 @@
 /** Design reminder: legal routes remain plain, legible Roman editorial documents—not card dashboards. */
+import React from "react";
 import { ArrowLeft } from "lucide-react";
 import { assets } from "@/content/siteData";
 

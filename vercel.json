@@ -1,5 +1,6 @@
 {
-  "buildCommand": "cd source && pnpm install && pnpm build",
+  "framework": "vite",
+  "buildCommand": "cd source && pnpm install --no-frozen-lockfile && pnpm build",
   "outputDirectory": "source/dist/public",
   "cleanUrls": true,
   "trailingSlash": false,

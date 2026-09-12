@@ -389,28 +389,33 @@ h1 em, h2 em { color: var(--gold-bright); font-family: var(--font-editorial); fo
   body { color: #111; background: #fff; }
 }
 
-/* Legal routes: bilingual, readable, and deliberately free of product-page ornament. */
+/* Legal routes: Roman Imperial Editorial typography matching the main landing page */
 .legal-page { position: relative; min-height: 100vh; isolation: isolate; background: linear-gradient(180deg, #0b0d11, #08090c 45%, #11100e); }
 .legal-page::before { content: ""; position: fixed; z-index: -1; inset: 0; background-image: linear-gradient(rgba(8,9,12,.9), rgba(8,9,12,.95)), url('/assets/media/tqi-marble-texture-960x360.webp'); background-size: auto 78vh; background-position: center top; opacity: .35; }
-.legal-header { min-height: 88px; width: min(1240px, calc(100% - 40px)); margin-inline: auto; padding-block: 14px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--line); }
-.legal-back { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; color: #c9c3b8; font-family: var(--font-mono); font-size: .64rem; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
-.legal-back svg { width: 16px; }
-.legal-main { width: min(940px, calc(100% - 40px)); margin-inline: auto; padding: 90px 0 110px; }
-.legal-main > h1 { max-width: 900px; padding-bottom: 34px; position: relative; font-size: clamp(3rem, 8vw, 6.8rem); }
-.legal-main > h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(280px, 62vw); height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
-.legal-updated { margin: 20px 0 0; color: var(--gold); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
-.legal-document { margin-top: 70px; display: grid; gap: 74px; }
-.legal-document section { padding-top: 28px; border-top: 1px solid var(--line); }
-.legal-document section { position: relative; }
-.legal-document section::before { content: "TQI · LEGAL REGISTER"; position: absolute; top: -11px; left: 0; padding-right: 12px; background: #090a0d; color: var(--gold); font-family: var(--font-mono); font-size: .5rem; letter-spacing: .13em; }
-.legal-document h2 { font-size: clamp(2rem, 5vw, 3.4rem); }
-.legal-document h3 { margin: 42px 0 10px; color: var(--gold-bright); font-family: var(--font-editorial); font-size: 1.25rem; font-weight: 500; }
-.legal-document p { max-width: 760px; color: #b3aea5; }
-.legal-fields { margin: 34px 0 0; border-top: 1px solid rgba(232,224,210,.12); }
-.legal-fields > div { min-height: 82px; padding: 16px 0; display: grid; gap: 4px; border-bottom: 1px solid rgba(232,224,210,.12); }
-.legal-fields dt { font-family: var(--font-editorial); font-size: 1.1rem; }
-.legal-fields dd { margin: 0; color: var(--gold); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; }
-.legal-footer { padding: 28px 20px; border-top: 1px solid var(--line); color: #77736d; font-family: var(--font-mono); font-size: .6rem; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
+.legal-header { min-height: 88px; width: min(1240px, calc(100% - 40px)); margin-inline: auto; padding-block: 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--line); }
+.legal-back { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; color: var(--gold-bright); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; font-weight: 500; transition: color 150ms ease; }
+.legal-back:hover { color: #ffffff; }
+.legal-back svg { width: 16px; height: 16px; }
+.legal-main { width: min(940px, calc(100% - 40px)); margin-inline: auto; padding: 70px 0 90px; }
+.legal-main > h1 { max-width: 900px; padding-bottom: 24px; position: relative; font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--stone); }
+.legal-main > h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(280px, 62vw); height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+.legal-updated { margin: 18px 0 0; color: var(--cyan); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.legal-document { margin-top: 50px; display: grid; gap: 60px; }
+.legal-document section { padding-top: 32px; border-top: 1px solid var(--line); position: relative; }
+.legal-document section::before { content: "TQI · OFFICIAL REGISTER"; position: absolute; top: -11px; left: 0; padding-right: 12px; background: #090a0d; color: var(--gold); font-family: var(--font-mono); font-size: .52rem; letter-spacing: .15em; text-transform: uppercase; }
+.legal-document h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-bright); margin: 0 0 16px; }
+.legal-document h3 { margin: 38px 0 12px; color: var(--gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.legal-document p { max-width: 820px; color: #cfcac0; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.75; font-weight: 350; margin: 0 0 16px; }
+.legal-document p strong { color: #ffffff; font-weight: 600; }
+.legal-document p em { color: var(--gold-bright); font-style: italic; }
+.legal-document ul { max-width: 820px; color: #cfcac0; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.75; margin: 12px 0 20px 24px; padding: 0; }
+.legal-document ul li { margin-bottom: 8px; }
+.legal-document ul strong { color: #ffffff; font-weight: 600; }
+.legal-fields { margin: 28px 0 34px; background: rgba(12, 15, 19, 0.7); border: 1px solid rgba(196, 163, 90, 0.22); border-radius: 12px; overflow: hidden; }
+.legal-fields > div { min-height: 60px; padding: 14px 20px; display: grid; gap: 6px; border-bottom: 1px solid rgba(196, 163, 90, 0.12); }
+.legal-fields > div:last-child { border-bottom: none; }
+.legal-fields dt { font-family: var(--font-display); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #e8e0d2; }
+.legal-fields dd { margin: 0; color: var(--gold-bright); font-family: var(--font-mono); font-size: 0.84rem; letter-spacing: 0.02em; }
 .not-found { min-height: 100vh; padding: 100px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 25%, rgba(196,163,90,.1), transparent 28%), #08090c; text-align: center; }
 .not-found > img { width: 150px; height: 150px; object-fit: contain; margin-bottom: 24px; }
 .not-found h1 { max-width: 900px; font-size: clamp(2.8rem, 8vw, 6.5rem); }
@@ -422,6 +427,6 @@ h1 em, h2 em { color: var(--gold-bright); font-family: var(--font-editorial); fo
   .ceremonial-divider { padding-inline: 56px; grid-template-columns: minmax(40px, 1fr) 58px minmax(40px, 1fr); }
   .legal-header { width: min(1240px, calc(100% - 64px)); flex-direction: row; align-items: center; justify-content: space-between; }
   .legal-main { width: min(940px, calc(100% - 64px)); }
-  .legal-fields > div { grid-template-columns: 1fr 1fr; align-items: center; }
+  .legal-fields > div { grid-template-columns: 1.2fr 1fr; align-items: center; }
   .legal-fields dd { text-align: right; }
 }
